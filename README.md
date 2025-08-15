@@ -1,0 +1,2 @@
+# Hacker-Mode
+HACKER MODE ACTIVATED
