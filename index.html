@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Hacker Animation</title>
+  <style>
+    body {
+      margin: 0;
+      overflow: hidden;
+      background: black;
+      color: #00ff00;
+      font-family: 'Courier New', Courier, monospace;
+    }
+
+    video {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: 0;
+    }
+
+    .hacker-title {
+      position: absolute;
+      top: 35%;
+      width: 100%;
+      text-align: center;
+      font-size: 3rem;
+      color: #00ff00;
+      text-shadow: 0 0 10px #00ff00;
+      animation: glitch 1s infinite;
+      z-index: 2;
+    }
+
+    .hacked-by {
+      position: absolute;
+      top: 45%;
+      width: 100%;
+      text-align: center;
+      font-size: 2rem;
+      color: #00ff00;
+      text-shadow: 0 0 10px #00ff00;
+      z-index: 2;
+    }
+
+    .hacker-img {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      border: 2px solid #0f0;
+      z-index: 2;
+    }
+
+    .telegram {
+      position: absolute;
+      bottom: 20px;
+      width: 100%;
+      text-align: center;
+      font-size: 1.2rem;
+      color: #00ff00;
+      z-index: 2;
+      line-height: 1.6;
+    }
+
+    .telegram a {
+      color: #00ff00;
+      text-decoration: none;
+      border-bottom: 1px dashed #00ff00;
+      margin: 0 5px;
+    }
+
+    audio {
+      display: none;
+    }
+
+    @keyframes glitch {
+      0% { transform: skewX(0deg); }
+      20% { transform: skewX(5deg); }
+      40% { transform: skewX(-5deg); }
+      60% { transform: skewX(3deg); }
+      80% { transform: skewX(-3deg); }
+      100% { transform: skewX(0deg); }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Indian Flag Background Video -->
+  <video autoplay muted loop playsinline>
+    <source src="indian-flag.mp4" type="video/mp4">
+  </video>
+
+  <!-- Hacker Image -->
+  <img src="hacker.jpg" alt="Hacker" class="hacker-img" />
+
+  <!-- Hacker Title -->
+  <div class="hacker-title">HACKER MODE ACTIVATED</div>
+  <div class="hacked-by">~ Hacked by Piyush ~</div>
+
+  <!-- Contact Links -->
+  <div class="telegram">
+    Contact:<br>
+    <a href="mailto:admin@cyberforenx.me">admin@cyberforenx.me</a><br>
+    <a href="https://t.me/cyberforenx" target="_blank">@cyberforenx</a>
+    <a href="https://www.facebook.com/cyberforenx" target="_blank">@cyberforenx</a>
+    <a href="https://x.com/cyberforenx" target="_blank">@cyberforenx</a>
+  </div>
+
+  <!-- Hidden Audio -->
+  <audio id="bgMusic" loop autoplay>
+    <source src="hacker.mp3" type="audio/mpeg">
+  </audio>
+
+  <!-- Music Play on Click (Fallback) -->
+  <script>
+    const bgMusic = document.getElementById("bgMusic");
+
+    // Try to play immediately (works if browser allows autoplay)
+    bgMusic.play().catch(() => {
+      console.warn("Autoplay blocked, waiting for user interaction...");
+    });
+
+    // If autoplay is blocked, start on first click
+    document.body.addEventListener('click', () => {
+      bgMusic.play();
+    }, { once: true });
+  </script>
+
+</body>
+</html>
